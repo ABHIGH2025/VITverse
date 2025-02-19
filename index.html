@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITVerse: Campus Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F4F4F4; /* Sugar background */
+            color: #3B2F2A; /* Espresso Oak text */
+            line-height: 2;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #3B2F2A; /* Espresso Oak background */
+            color: #F4F4F4; /* Sugar text */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #F4F4F4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #93C572; /* Pistachio color on hover */
+        }
+
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?university,students') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            position: relative;
+            z-index: 2;
+            color: #F5DEB3; /* Wheat for the title */
+        }
+
+        .btn {
+            background-color: #6B4F3D; /* Mocha for buttons */
+            color: #F4F4F4; /* Sugar text */
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background-color: #93C572; /* Pistachio on hover */
+            color: #3B2F2A; /* Espresso Oak text on hover */
+        }
+
+        .features {
+            padding: 40px;
+            background-color: #F2E1C1; /* Bisque background */
+            text-align: center;
+        }
+
+        .features h2 {
+            margin-bottom: 20px;
+            color: #6B4F3D; /* Mocha for headings */
+        }
+
+        .feature {
+            display: inline-block;
+            width: 22%;
+            margin: 1%;
+            padding: 20px;
+            background-color: #F4F4F4; /* Sugar background for feature boxes */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .feature i {
+            font-size: 40px;
+            color: #6B4F3D; /* Mocha icons */
+            margin-bottom: 10px;
+        }
+
+        .testimonials {
+            padding: 40px;
+            background-color: #F5DEB3; /* Wheat background */
+            text-align: center;
+        }
+
+        .testimonial {
+            margin: 20px 0;
+            font-style: italic;
+            color: #6B4F3D; /* Mocha text color */
+        }
+
+        footer {
+            background-color: #93C572; /* Pistachio footer */
+            color: #F4F4F4; /* Sugar text color */
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            color: #F4F4F4;
+            text-decoration: none;
+        }
+
+        .social-media a {
+            color: #F4F4F4;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-media a:hover {
+            color: #3B2F2A; /* Espresso Oak color on hover */
+        }
+
+        @media (max-width: 768px) {
+            .feature {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VITVerse</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="C:\Users\siddh\OneDrive\Desktop\VITverse\login.html">Login/Signup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Connect. Collaborate. Trade.</h1>
+        <a href="#features" class="btn">Explore Now</a>
+        <a href="#signup" class="btn">Join Us</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Key Features</h2>
+        <div class="feature">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Marketplace</h3>
+            <p>Buy and sell items within the campus community.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-comments"></i>
+            <h3>Messaging</h3>
+            <p>Connect with fellow students easily.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Events</h3>
+            <p>Stay updated on campus events and activities.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-newspaper"></i>
+            <h3>News</h3>
+            <p>Get the latest news and updates from VIT.</p>
+        </div>
+        <!-- New Group Feature -->
+        <div class="feature">
+            <i class="fas fa-users"></i>
+            <h3>Groups</h3>
+            <p>Create or join groups to collaborate and share ideas.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Students Say</h2>
+        <div class="testimonial">
+            <p>"VITVerse has transformed how we connect!"</p>
+            <p>- Student Name</p>
+        </div>
+        <div class="testimonial">
+            <p>"A fantastic platform for collaboration and trading!"</p>
+            <p>- Another Student</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 VITVerse. All rights reserved .</p>
+        <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#help">Help Center</a></li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

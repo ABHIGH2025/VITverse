@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - VITVerse: Campus Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F4F4F4; /* Sugar */
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+            color: #6B4F3D; /* Mocha */
+        }
+
+        .profile-field {
+            margin-bottom: 15px;
+        }
+
+        .profile-field label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .profile-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-field input:focus {
+            border-color: #93C572; /* Pistachio on focus */
+        }
+
+        .save-button {
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background-color: #93C572; /* Pistachio on hover */
+        }
+
+        footer {
+            background-color: #D6B784; /* Wheat */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #FFD700; /* Gold color */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VITVerse</div>
+    </header>
+
+    <div class="profile-container">
+        <h2>Your Profile</h2>
+        <div class="profile-field">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" value="John Doe">
+        </div>
+        <div class="profile-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="john.doe@example.com">
+        </div>
+        <div class="profile-field">
+            <label for="userId">User  ID</label>
+            <input type="text" id="userId" value="user123" disabled>
+        </div>
+        <div class="profile-field">
+            <label for="bio">Bio</label>
+            <input type="text" id="bio" value="Student at VIT University">
+        </div>
+        <button class="save-button" id="saveProfile">Save Changes</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 VITVerse. All rights reserved.</p>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('saveProfile').addEventListener('click', function() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const bio = document.getElementById('bio').value;
+
+            // Here you would typically send the updated data to the server
+            alert(`Profile updated:\nName: ${fullName}\nEmail: ${email}\nBio: ${bio}`);
+        });
+    </script>
+</body>
+</html>

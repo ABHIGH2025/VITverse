@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create or Join Group - VITVerse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F4F4F4;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            background-color: #6B4F3D;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .group-container {
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #6B4F3D;
+        }
+
+        .create-group, .join-group {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #6B4F3D;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #93C572;
+        }
+
+        .group-item {
+            background-color: #93C572;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .go-back-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .go-back-button {
+            background-color: #6B4F3D;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .go-back-button:hover {
+            background-color: #93C572;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VITVerse</div>
+    </header>
+
+    <div class="group-container">
+        <h2>Create or Join a Group</h2>
+
+        <!-- Create Group Form -->
+        <div class="create-group">
+            <input type="text" id="groupName" placeholder="Group Name" required>
+            <textarea id="groupDescription" placeholder="Group Description" required></textarea>
+            <select id="groupCategory" required>
+                <option value="" disabled selected>Select Interest Category</option>
+                <option value="Event">Event</option>
+                <option value="Branch">Branch</option>
+                <option value="Sports">Sports</option>
+                <option value="Music">Music</option>
+            </select>
+            <button id="createGroupButton">Create Group</button>
+        </div>
+
+        <!-- Join Group Section -->
+        <div class="join-group">
+            <h3>Join an Existing Group</h3>
+            <div id="groupList">
+                <div class="group-item">
+                    <h4>Event: Tech Fest 2025</h4>
+                    <p>Description: Join us to stay updated on the latest tech trends and events.</p>
+                    <button class="join-button">Join</button>
+                </div>
+                <div class="group-item">
+                    <h4>Branch: Computer Science</h4>
+                    <p>Description: For all computer science enthusiasts to collaborate.</p>
+                    <button class="join-button">Join</button>
+                </div>
+                <div class="group-item">
+                    <h4>Sports: Cricket Club</h4>
+                    <p>Description: For cricket lovers who want to organize matches and events.</p>
+                    <button class="join-button">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="go-back-container">
+        <button class="go-back-button" onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        document.getElementById('createGroupButton').addEventListener('click', function() {
+            const groupName = document.getElementById('groupName').value;
+            const groupDescription = document.getElementById('groupDescription').value;
+            const groupCategory = document.getElementById('groupCategory').value;
+
+            if (groupName && groupDescription && groupCategory) {
+                const newGroup = document.createElement('div');
+                newGroup.classList.add('group-item');
+                newGroup.innerHTML = `<h4>${groupCategory}: ${groupName}</h4><p>${groupDescription}</p><button class="join-button">Join</button>`;
+                document.getElementById('groupList').appendChild(newGroup);
+
+                // Clear the input fields
+                document.getElementById('groupName').value = '';
+                document.getElementById('groupDescription').value = '';
+                document.getElementById('groupCategory').value = '';
+            } else {
+                alert('Please fill in all fields to create a group.');
+            }
+        });
+
+        document.getElementById('groupList').addEventListener('click', function(event) {
+            if (event.target.classList.contains('join-button')) {
+                const groupName = event.target.parentElement.querySelector('h4').innerText;
+                alert(`You have joined: ${groupName}`);
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

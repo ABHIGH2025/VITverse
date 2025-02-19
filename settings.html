@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - VITVerse: Campus Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F4F4F4; /* Sugar */
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .settings-container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .settings-container h2 {
+            margin-bottom: 20px;
+            color: #6B4F3D; /* Mocha */
+        }
+
+        .settings-field {
+            margin-bottom: 15px;
+        }
+
+        .settings-field label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .settings-field input,
+        .settings-field select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .settings-field input:focus,
+        .settings-field select:focus {
+            border-color: #93C572; /* Pistachio on focus */
+        }
+
+        .save-button {
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background-color: #93C572; /* Pistachio on hover */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #FFD700; /* Gold color */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VITVerse</div>
+    </header>
+
+    <div class="settings-container">
+        <h2>Account Settings</h2>
+        <div class="settings-field">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" placeholder="Enter current password">
+        </div>
+        <div class="settings-field">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" placeholder="Enter new password">
+        </div>
+        <div class="settings-field">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" placeholder="Confirm new password">
+        </div>
+        <div class="settings-field">
+            <label for="notificationPreferences">Notification Preferences</label>
+            <select id="notificationPreferences">
+                <option value="all">All Notifications</option>
+                <option value="mentions">Mentions Only</option>
+                <option value="none">No Notifications</option>
+            </select>
+        </div>
+        <button class="save-button" id="saveSettings">Save Changes</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 VITVerse. All rights reserved.</p>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('saveSettings').addEventListener('click', function() {
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const notificationPreferences = document.getElementById('notificationPreferences').value;
+
+            if (newPassword !== confirmPassword) {
+                alert("New passwords do not match!");
+                return;
+            }
+
+            // Here you would typically send the updated settings to the server
+            alert(`Settings updated:\nNotification Preferences: ${notificationPreferences}`);
+        });
+    </script>
+</body>
+</html>

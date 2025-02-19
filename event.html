@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - VITVerse: Campus Nexus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F4F4F4; /* Sugar */
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .events-container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .event {
+            background-color: #E9ECEF; /* Light Wheat */
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .event h3 {
+            margin: 0;
+            color: #6B4F3D; /* Mocha */
+        }
+
+        .event p {
+            margin: 5px 0;
+            color: #333; /* Darker for text contrast */
+        }
+
+        .rsvp-button {
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .rsvp-button:hover {
+            background-color: #93C572; /* Pistachio */
+        }
+
+        .create-event {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .create-event input, .create-event textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .create-event button {
+            background-color: #6B4F3D; /* Mocha */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .create-event button:hover {
+            background-color: #93C572; /* Pistachio */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #FFD700; /* Gold */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">VITVerse</div>
+    </header>
+
+    <div class="events-container">
+        <h2>Upcoming Events</h2>
+        <div class="event">
+            <h3>Event Title 1</h3>
+            <p>Date: March 15, 2023</p>
+            <p>Description: Join us for an exciting event!</p>
+            <button class="rsvp-button">RSVP</button>
+        </div>
+        <div class="event">
+            <h3>Event Title 2</h3>
+            <p>Date: March 20, 2023</p>
+            <p>Description: Don't miss this amazing opportunity!</p>
+            <button class="rsvp-button">RSVP</button>
+        </div>
+        <div class="event">
+            <h3>Event Title 3</h3>
+            <p>Date: March 25, 2023</p>
+            <p>Description: A great chance to network and learn!</p>
+            <button class="rsvp-button">RSVP</button>
+        </div>
+
+        <div class="create-event">
+            <h3>Create a New Event</h3>
+            <input type="text" id="eventTitle" placeholder="Event Title" required>
+            <input type="date" id="eventDate" required>
+            <textarea id="eventDescription" placeholder="Event Description" required></textarea>
+            <button id="createEventButton">Create Event</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 VITVerse. All rights reserved.</p>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Event listener for RSVP buttons
+        document.querySelectorAll('.rsvp-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('You have successfully RSVP\'d to the event!');
+            });
+        });
+
+        // Event listener for creating a new event
+        document.getElementById('createEventButton').addEventListener('click', function() {
+            const title = document.getElementById('eventTitle').value;
+            const date = document.getElementById('eventDate').value;
+            const description = document.getElementById('eventDescription').value;
+
+            if (title && date && description) {
+                const newEvent = document.createElement('div');
+                newEvent.classList.add('event');
+                newEvent.innerHTML = `<h3>${title}</h3><p>Date: ${date}</p><p>Description: ${description}</p><button class="rsvp-button">RSVP</button>`;
+                document.querySelector('.events-container').insertBefore(newEvent, document.querySelector('.create-event'));
+
+                // Clear the input fields
+                document.getElementById('eventTitle').value = '';
+                document.getElementById('eventDate').value = '';
+                document.getElementById('eventDescription').value = '';
+            } else {
+                alert('Please fill in all fields to create an event.');
+            }
+        });
+    </script>
+</body>
+</html>
