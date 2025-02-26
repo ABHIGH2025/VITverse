@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages - VITVerse: Campus Nexus</title>
+    <title>Events - VITVerse: Campus Nexus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -14,7 +16,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #F4F4F4; /* Sugar */
+            background-color: #f5f5f5;
             padding: 20px;
         }
 
@@ -22,184 +24,123 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #6B4F3D; /* Mocha */
+            background-color: #4a2c2a;
             color: white;
-            padding: 10px 20px;
-        }
-
-        .logo {
-            font-size: 24px;
+            padding: 15px 20px;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        .messages-container {
+        .events-container {
             margin-top: 20px;
-            background-color: #FFFFFF; /* Sugar */
+            background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .chat-window {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #C5C6C7; /* Wheat */
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 20px;
-            background-color: #E9ECEF; /* Sugar */
+        #calendar {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .message {
-            background-color: #E9ECEF; /* Sugar */
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-
-        .send-message {
-            background-color: #FFFFFF; /* Sugar */
+        .create-event {
+            margin-top: 20px;
+            background-color: white;
             padding: 15px;
             border-radius: 5px;
             box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .send-message textarea {
+        .create-event input, .create-event textarea {
             width: 100%;
-            height: 100px;
             margin-bottom: 10px;
-            border: 1px solid #C5C6C7; /* Wheat */
-            border-radius: 5px;
             padding: 10px;
+            border: 1px solid gray;
+            border-radius: 5px;
         }
 
-        .send-message button {
-            background-color: #6B4F3D; /* Mocha */
+        .create-event button {
+            background-color: #4a2c2a;
             color: white;
             border: none;
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        .send-message button:hover {
-            background-color: #93C572; /* Pistachio */
+        .create-event button:hover {
+            background-color: #2a7a2a;
         }
 
         footer {
-            background-color: #333; /* Espresso Oak */
+            background-color: black;
             color: white;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             margin-top: 20px;
         }
 
         footer a {
-            color: #93C572; /* Pistachio */
+            color: yellow;
             text-decoration: none;
-        }
-
-        .go-back-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .go-back-button {
-            background-color: #6B4F3D; /* Mocha */
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .go-back-button:hover {
-            background-color: #93C572; /* Pistachio */
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">VITVerse</div>
-    </header>
+    <header>VITVerse: Events</header>
 
-    <div class="messages-container">
-        <h2 style="color: #6B4F3D;">Your Messages</h2>
-        <select id="recipientId">
-            <option value="" disabled selected>Select Recipient</option>
-            <option value="user1">User 1</option>
-            <option value="user2">User 2</option>
-            <option value="user3">User 3</option>
-        </select>
+    <div class="events-container">
+        <h2>Upcoming Events</h2>
+        <div id="calendar"></div>
 
-        <div class="chat-window" id="chatWindow">
-            <!-- Chat messages will be displayed here -->
+        <div class="create-event">
+            <h3>Create a New Event</h3>
+            <input type="text" id="eventTitle" placeholder="Event Title" required>
+            <input type="date" id="eventDate" required>
+            <textarea id="eventDescription" placeholder="Event Description" required></textarea>
+            <button id="createEventButton">Create Event</button>
         </div>
-
-        <div class="send-message">
-            <h3 style="color: #6B4F3D;">Send a New Message</h3>
-            <textarea id="messageContent" placeholder="Type your message here..."></textarea>
-            <button id="sendMessage">Send Message</button>
-        </div>
-    </div>
-    <div class="go-back-container">
-        <button class="go-back-button" onclick="goBack()">Go Back</button>
     </div>
 
     <footer>
-        <p>&copy; 2023 VITVerse. All rights reserved.</p>
+        <p>&copy; 2025 VITVerse. All rights reserved.</p>
         <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
     </footer>
 
     <script>
-        const chatWindow = document.getElementById('chatWindow');
-        const recipientIdSelect = document.getElementById('recipientId');
-        const messageContent = document.getElementById('messageContent');
-        const sendMessageButton = document.getElementById('sendMessage');
+        document.addEventListener("DOMContentLoaded", function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: []
+            });
+            calendar.render();
 
-        // Store messages in a simple object for demonstration
-        const messages = {
-            user1: [],
-            user2: [],
-            user3: []
-        };
+            document.getElementById('createEventButton').addEventListener('click', function() {
+                const title = document.getElementById('eventTitle').value;
+                const date = document.getElementById('eventDate').value;
+                const description = document.getElementById('eventDescription').value;
 
-        // Function to update the chat window
-        function updateChatWindow() {
-            const selectedUser = recipientIdSelect.value;
-            chatWindow.innerHTML = ''; // Clear the chat window
-
-            if (messages[selectedUser]) {
-                messages[selectedUser].forEach(msg => {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.classList.add('message');
-                    messageDiv.textContent = msg;
-                    chatWindow.appendChild(messageDiv);
-                });
-            }
-        }
-
-        // Event listener for recipient selection
-        recipientIdSelect.addEventListener('change', updateChatWindow);
-
-        // Event listener for sending messages
-        sendMessageButton.addEventListener('click', function() {
-            const recipientId = recipientIdSelect.value;
-            const content = messageContent.value;
-
-            if (recipientId && content) {
-                // Store the message
-                messages[recipientId].push(content);
-                messageContent.value = ''; // Clear the message input
-                updateChatWindow(); // Update the chat window
-            } else {
-                alert('Please select a recipient and enter a message.');
-            }
+                if (title && date && description) {
+                    calendar.addEvent({
+                        title: title,
+                        start: date,
+                        description: description
+                    });
+                    alert('Event Added to Calendar!');
+                    document.getElementById('eventTitle').value = '';
+                    document.getElementById('eventDate').value = '';
+                    document.getElementById('eventDescription').value = '';
+                } else {
+                    alert('Please fill in all fields to create an event.');
+                }
+            });
         });
-
-        function goBack() {
-            window.history.back();
-        }
     </script>
 </body>
 </html>
