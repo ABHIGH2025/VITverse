@@ -6,6 +6,7 @@
     <title>Events - VITVerse: Campus Nexus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,105 +15,163 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: white;
-            padding: 20px;
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            line-height: 1.6;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: brown;
+            background-color: #3b2f2a;
             color: white;
-            padding: 10px 20px;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
         .events-container {
-            margin-top: 20px;
+            margin-top: 1.5rem;
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+
+        .events-container h2 {
+            margin-bottom: 1.2rem;
+            color: #3b2f2a;
+            font-size: 1.75rem;
         }
 
         .event {
-            background-color: lightgray;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
+            background-color: #f08080;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border-radius: 0.3rem;
         }
 
         .event h3 {
             margin: 0;
-            color: brown;
+            color: #3b2f2a;
+            font-size: 1.2rem;
         }
 
         .event p {
-            margin: 5px 0;
-            color: black;
+            margin-top: 0.5rem;
+            color: #333;
+            font-size: 0.9rem;
         }
 
-        .rsvp-button {
-            background-color: brown;
+        .event .date {
+            font-style: italic;
+            color: #666;
+        }
+
+        .attend-button {
+            background-color: #3b2f2a;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 0.75rem 1rem;
+            border-radius: 0.3rem;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 0.75rem;
+            transition: background-color 0.3s;
         }
 
-        .rsvp-button:hover {
-            background-color: green;
+        .attend-button:hover {
+            background-color: #90ee90;
+            color: #3b2f2a;
         }
 
-        .create-event {
-            margin-top: 20px;
+        .add-event {
+            margin-top: 1.5rem;
             background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
         }
 
-        .create-event input, .create-event textarea {
+        .add-event h3 {
+            margin-bottom: 1rem;
+            color: #3b2f2a;
+        }
+
+        .add-event input,
+        .add-event textarea {
             width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid gray;
-            border-radius: 5px;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.3rem;
+            font-size: 1rem;
         }
 
-        .create-event button {
-            background-color: brown;
+        .add-event button {
+            background-color: #3b2f2a;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 0.75rem 1rem;
+            border-radius: 0.3rem;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .create-event button:hover {
-            background-color: green;
+        .add-event button:hover {
+            background-color: #90ee90;
+            color: #3b2f2a;
         }
 
         footer {
-            background-color: black;
+            background-color: #bdb76b;
             color: white;
-            padding: 20px;
+            padding: 1.5rem;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 1.5rem;
         }
 
         footer a {
-            color: yellow;
+            color: gold;
             text-decoration: none;
         }
+
+        .go-back-container {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .go-back-button {
+            background-color: #3b2f2a;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .go-back-button:hover {
+            background-color: #90ee90;
+            color: #3b2f2a;
+        }
+
+        @media (max-width: 768px) {
+            .events-container,
+            .add-event {
+                padding: 1rem;
+            }
+
+            body {
+                padding: 1rem;
+            }
+        }
     </style>
+
 </head>
 <body>
     <header>
@@ -121,31 +180,15 @@
 
     <div class="events-container">
         <h2>Upcoming Events</h2>
-        <div class="event">
-            <h3>Event Title 1</h3>
-            <p>Date: March 15, 2025</p>
-            <p>Description: Join us for an exciting event!</p>
-            <button class="rsvp-button">Register</button>
-        </div>
-        <div class="event">
-            <h3>Event Title 2</h3>
-            <p>Date: March 20, 2025</p>
-            <p>Description: Don't miss this amazing opportunity!</p>
-            <button class="rsvp-button">Register</button>
-        </div>
-        <div class="event">
-            <h3>Event Title 3</h3>
-            <p>Date: March 25, 2025</p>
-            <p>Description: A great chance to network and learn!</p>
-            <button class="rsvp-button">Register</button>
+        <div id="eventsDisplay">
         </div>
 
-        <div class="create-event">
-            <h3>Create a New Event</h3>
+        <div class="add-event">
+            <h3>Add a New Event</h3>
             <input type="text" id="eventTitle" placeholder="Event Title" required>
             <input type="date" id="eventDate" required>
             <textarea id="eventDescription" placeholder="Event Description" required></textarea>
-            <button id="createEventButton">Create Event</button>
+            <button id="addEventButton">Add Event</button>
         </div>
     </div>
 
@@ -154,31 +197,78 @@
         <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
     </footer>
 
+    <div class="go-back-container">
+        <button class="go-back-button" onclick="goBack()">Go Back</button>
+    </div>
+
     <script>
-        document.querySelectorAll('.rsvp-button').forEach(button => {
-            button.addEventListener('click', function() {
-                alert('You have successfully registered to the event!');
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            function loadEvents() {
+                fetch('/events/items')
+                    .then(response => response.json())
+                    .then(events => {
+                        const eventsDisplay = document.getElementById('eventsDisplay');
+                        eventsDisplay.innerHTML = ''; 
+                        events.forEach(event => {
+                            const newEvent = document.createElement('div');
+                            newEvent.classList.add('event');
+                            newEvent.innerHTML = `
+                                <h3>${event.title}</h3>
+                                <p class="date">Date: ${new Date(event.date).toLocaleDateString()}</p>
+                                <p>${event.description}</p>
+                                <button class="attend-button">Attend</button>
+                            `;
+                            eventsDisplay.appendChild(newEvent);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching events:', error));
+            }
+
+            loadEvents();
+
+            document.getElementById('addEventButton').addEventListener('click', function() {
+                const title = document.getElementById('eventTitle').value;
+                const date = document.getElementById('eventDate').value;
+                const description = document.getElementById('eventDescription').value;
+
+                if (title && date && description) {
+                    fetch('/events/add', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ title: title, date: date, description: description })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            loadEvents();
+
+                            document.getElementById('eventTitle').value = '';
+                            document.getElementById('eventDate').value = '';
+                            document.getElementById('eventDescription').value = '';
+                        } else {
+                            alert('Failed to add event.');
+                        }
+                    })
+                    .catch(error => console.error('Error adding event:', error));
+                } else {
+                    alert('Please fill in all fields to create an event.');
+                }
+            });
+
+            document.getElementById('eventsDisplay').addEventListener('click', function(event) {
+                if (event.target.classList.contains('attend-button')) {
+                    const eventTitle = event.target.parentElement.querySelector('h3').innerText;
+                    alert(`You are attending: ${eventTitle}`);
+                }
             });
         });
 
-        document.getElementById('createEventButton').addEventListener('click', function() {
-            const title = document.getElementById('eventTitle').value;
-            const date = document.getElementById('eventDate').value;
-            const description = document.getElementById('eventDescription').value;
-
-            if (title && date && description) {
-                const newEvent = document.createElement('div');
-                newEvent.classList.add('event');
-                newEvent.innerHTML = `<h3>${title}</h3><p>Date: ${date}</p><p>Description: ${description}</p><button class="rsvp-button">RSVP</button>`;
-                document.querySelector('.events-container').insertBefore(newEvent, document.querySelector('.create-event'));
-
-                document.getElementById('eventTitle').value = '';
-                document.getElementById('eventDate').value = '';
-                document.getElementById('eventDescription').value = '';
-            } else {
-                alert('Please fill in all fields to create an event.');
-            }
-        });
+        function goBack() {
+            window.history.back();
+        }
     </script>
 </body>
 </html>
