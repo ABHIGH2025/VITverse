@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,88 +12,116 @@
             margin: 0;
             padding: 0;
         }
-
+    
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #F4F4F4; /* Sugar */
-            padding: 20px;
+            background-color: #f4f4f4;
+            padding: 1.5rem;
         }
-
+    
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #6B4F3D; /* Mocha */
+            background-color: #333;
             color: white;
-            padding: 10px 20px;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-
+    
         .logo {
-            font-size: 24px;
+            font-size: 1.75rem;
             font-weight: bold;
         }
-
+    
         .profile-container {
-            margin-top: 20px;
+            margin-top: 1.5rem;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15);
         }
-
+    
         .profile-container h2 {
-            margin-bottom: 20px;
-            color: #6B4F3D; /* Mocha */
-        }
-
-        .profile-field {
-            margin-bottom: 15px;
-        }
-
-        .profile-field label {
-            display: block;
-            margin-bottom: 5px;
+            margin-bottom: 1.25rem;
             color: #333;
+            font-size: 1.75rem;
         }
-
-        .profile-field input {
+    
+        .profile-form input,
+        .profile-form textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin-bottom: 0.75rem;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 0.3rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
-
-        .profile-field input:focus {
-            border-color: #93C572; /* Pistachio on focus */
+    
+        .profile-form input:focus,
+        .profile-form textarea:focus {
+            border-color: #93C572;
+            outline: none;
         }
-
-        .save-button {
-            background-color: #6B4F3D; /* Mocha */
+    
+        .profile-form button {
+            background-color: #333;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.3rem;
             cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
-
-        .save-button:hover {
-            background-color: #93C572; /* Pistachio on hover */
+    
+        .profile-form button:hover {
+            background-color: #555;
         }
-
+    
         footer {
-            background-color: #D6B784; /* Wheat */
+            background-color: #333;
             color: white;
-            padding: 20px;
+            padding: 1.5rem;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 1.5rem;
         }
-
+    
         footer a {
-            color: #FFD700; /* Gold color */
+            color: gold;
             text-decoration: none;
         }
+    
+        .go-back-container {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+    
+        .go-back-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+    
+        .go-back-button:hover {
+            background-color: #555;
+        }
+    
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 1rem;
+            }
+        }
     </style>
+    
 </head>
+
 <body>
     <header>
         <div class="logo">VITVerse</div>
@@ -100,23 +129,12 @@
 
     <div class="profile-container">
         <h2>Your Profile</h2>
-        <div class="profile-field">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" value="AMIT GUPTA">
-        </div>
-        <div class="profile-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" value="amit.gupta2023@vit.com">
-        </div>
-        <div class="profile-field">
-            <label for="userId">User  ID</label>
-            <input type="text" id="userId" value="23BIT0000" disabled>
-        </div>
-        <div class="profile-field">
-            <label for="bio">Bio</label>
-            <input type="text" id="bio" value="Student at branch IT in VIT University">
-        </div>
-        <button class="save-button" id="saveProfile">Save Changes</button>
+        <form id="profileForm" class="profile-form">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="bio" placeholder="Bio" rows="4"></textarea>
+            <button type="button" id="updateProfileButton">Update Profile</button>
+        </form>
     </div>
 
     <footer>
@@ -124,15 +142,53 @@
         <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
     </footer>
 
-    <script>
-        document.getElementById('saveProfile').addEventListener('click', function() {
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const bio = document.getElementById('bio').value;
+    <div class="go-back-container">
+        <button class="go-back-button" onclick="goBack()">Go Back</button>
+    </div>
 
-            // Here you would typically send the updated data to the server
-            alert(`Profile updated:\nName: ${fullName}\nEmail: ${email}\nBio: ${bio}`);
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function fetchUserProfile() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const fullName = urlParams.get('fullName');
+                const email = urlParams.get('email');
+                const bio = urlParams.get('bio');
+
+                document.getElementById('fullName').value = fullName || 'Siddhant march';
+                document.getElementById('email').value = email || 'Siddhantmarch@gmail.com';
+                document.getElementById('bio').value = bio || 'Student at VIT.';
+            }
+
+            fetchUserProfile();
+
+            document.getElementById('updateProfileButton').addEventListener('click', function () {
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const bio = document.getElementById('bio').value;
+
+                fetch('/updateProfile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            fullName: fullName,
+                            email: email,
+                            bio: bio
+                        })
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert(data); 
+                    })
+                    .catch(error => console.error('Error updating profile:', error));
+            });
         });
+
+        function goBack() {
+            window.history.back();
+        }
     </script>
 </body>
+
 </html>
