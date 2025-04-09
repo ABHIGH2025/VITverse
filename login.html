@@ -1,142 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loginpage - VITVerse: Campus Nexus</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - VITVerse: Campus Nexus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif; 
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #fff; 
+      padding: 2.5rem; 
+      border-radius: 0.6rem; 
+      box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15); 
+      width: 350px; 
+      text-align: center;
+    }
+    h2 {
+        color: #3B2F2A;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.8rem; 
+      margin-top: 1rem; 
+      border-radius: 0.3rem;
+      box-sizing: border-box;
+      font-size: 1rem; 
+    }
+    input {
+      border: 1px solid #ddd;
+      transition: border-color 0.3s;
+    }
+    input:focus {
+        border-color: #93C572;
+        outline: none;
+    }
+    button {
+      background-color: #6B4F3D;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #93C572;
+      color: #3B2F2A;
+    }
+    .social-login {
+      margin: 1.5rem 0; 
+      display: flex;
+      justify-content: space-around;
+    }
+    .social-login a {
+        color: #6B4F3D;
+        font-size: 1.5rem;
+        transition: color 0.3s;
+    }
+    .social-login a:hover {
+        color: #93C572;
+    }
+    .footer {
+      font-size: 0.9rem; 
+      margin-top: 1.5rem;
+      color: #666;
+    }
+    .footer a {
+      color: #93C572;
+      text-decoration: none;
+    }
+  </style>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #F4F4F4; /* Sugar background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .login-container {
-            background-color: #FFFFFF; /* Sugar */
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-
-        .login-container h2 {
-            margin-bottom: 20px;
-            color: #6B4F3D; /* Mocha */
-        }
-
-        .login-container input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #C5C6C7; /* Wheat */
-            border-radius: 5px;
-        }
-
-        .login-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #6B4F3D; /* Mocha */
-            color: #F4F4F4; /* Sugar */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .login-container button:hover {
-            background-color: #93C572; /* Pistachio on hover */
-        }
-
-        .social-login {
-            margin: 20px 0;
-        }
-
-        .social-login a {
-            text-decoration: none;
-            color: #6B4F3D; /* Mocha */
-            margin: 0 10px;
-            font-size: 18px;
-        }
-
-        .social-login a:hover {
-            color: #93C572; /* Pistachio on hover */
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #6B4F3D; /* Mocha */
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: #93C572; /* Pistachio */
-        }
-
-        .go-back-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .go-back-button {
-            background-color: #6B4F3D; /* Mocha */
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .go-back-button:hover {
-            background-color: #93C572; /* Pistachio */
-        }
-    </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login to VITVerse</h2>
-        <form id="loginForm" onsubmit="handleLogin(event)">
-            <input type="text" id="username" placeholder="Email/Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-    
-        <div class="social-login">
-            <p>Or login with:</p>
-            <a href="#"><i class="fab fa-google"></i> Google</a>
-            <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-            <a href="#"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-    
-        <div class="footer">
-            <p>Don't have an account? <a href="signup.html">Sign Up here</a></p>
-            <p><a href="#forgot-password">Forgot Password?</a></p>
-        </div>
-    </div>
-    <div class="go-back-container">
-        <button class="go-back-button" onclick="goBack()">Go Back</button>
-    </div>
-    <script>
-        function handleLogin(event) {
-            event.preventDefault(); // Prevent the form from reloading
-            // Here, you can add form validation or other logic before redirecting
-            window.location.href = 'dashboard.html';
-        }
+  <div class="login-container">
+    <h2>Login to VITVerse</h2>
+    <form id="loginForm">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
 
-        function goBack() {
-            window.history.back();
+    <div class="social-login">
+      <p>Or login with:</p>
+      <a href="#"><i class="fab fa-google"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+
+    <div class="footer">
+      <p>Don't have an account? <a href="signup.html">Sign Up here</a></p>
+      <p><a href="#">Forgot Password?</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value.trim();
+      const password = e.target.password.value;
+
+      try {
+        const response = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+          alert("Login successful! Redirecting...");
+          window.location.href = "dashboard.html";
+        } else {
+          if (result.message.includes("not found")) {
+            if(confirm(" User not found. Redirect to signup page?")) {
+              window.location.href = "signup.html";
+            }
+          } else if (result.message.includes("password")) {
+            alert(" Incorrect password. Please try again.");
+          } else {
+            alert(` Error: ${result.message}`);
+          }
         }
-    </script>    
+      } catch (error) {
+        console.error("Login error:", error);
+        alert(" Server connection failed. Please try again later.");
+      }
+    });
+  </script>
 </body>
 </html>
