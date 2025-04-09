@@ -6,28 +6,157 @@
     <title>User Dashboard - VITVerse: Campus Nexus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Arial', sans-serif; background-color: #F4F4F4; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #6B4F3D; color: white; }
-        .logo { font-size: 24px; font-weight: bold; }
-        nav ul { list-style: none; display: flex; }
-        nav ul li { margin: 0 15px; }
-        nav ul li a { text-decoration: none; color: white; transition: color 0.3s; }
-        nav ul li a:hover { color: #FFD700; }
-        .dashboard-container { display: flex; padding: 20px; }
-        .sidebar { width: 200px; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); margin-right: 20px; }
-        .sidebar h3 { color: #6B4F3D; }
-        .sidebar a { display: block; margin: 10px 0; text-decoration: none; color: #6B4F3D; }
-        .sidebar a:hover { color: #93C572; text-decoration: underline; }
-        .main-content { flex: 1; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
-        .main-content h2 { color: #6B4F3D; }
-        .card { background-color: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 5px; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
-        footer { background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 20px; }
-        footer a { color: #FFD700; text-decoration: none; }
-        .go-back-container { margin-top: 20px; text-align: center; }
-        .go-back-button { background-color: #6B4F3D; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
-        .go-back-button:hover { background-color: #93C572; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+    
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #6b4f3d;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+    
+        nav ul li {
+            margin: 0 1rem;
+        }
+    
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+    
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+    
+        .dashboard-container {
+            display: flex;
+            padding: 1.5rem;
+        }
+    
+        .sidebar {
+            width: 220px;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+            margin-right: 1.5rem;
+        }
+    
+        .sidebar h3 {
+            color: #6b4f3d;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+    
+        .sidebar a {
+            display: block;
+            margin: 0.75rem 0;
+            text-decoration: none;
+            color: #6b4f3d;
+        }
+    
+        .sidebar a:hover {
+            color: #93c572;
+            text-decoration: underline;
+        }
+    
+        .main-content {
+            flex: 1;
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+    
+        .main-content h2 {
+            color: #6b4f3d;
+            font-size: 1.75rem;
+            margin-bottom: 1.2rem;
+        }
+    
+
+        .card {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border-radius: 0.3rem;
+            box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+        }
+    
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+    
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+    
+        .go-back-container {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+    
+        .go-back-button {
+            background-color: #6b4f3d;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .go-back-button:hover {
+            background-color: #93c572;
+        }
+    
+        @media (max-width: 768px) {
+            .dashboard-container {
+                flex-direction: column;
+            }
+    
+            .sidebar {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+    
+            .main-content {
+                padding: 1rem;
+            }
+        }
     </style>
+    
 </head>
 <body>
     <header>
@@ -51,11 +180,11 @@
             <a href="group.html">Groups</a>
         </div>
         <div class="main-content">
-            <h2>Welcome,AMIT GUPTA!</h2>
-            <div class="card"><h3>Upcoming Events</h3><p>3 upcoming events Visit events to have a look !.</p></div>
-            <div class="card"><h3>Recent Messages</h3><p>4 new messages Visit message to have a look</p></div>
+            <h2>Welcome,USER!</h2>
+            <div class="card"><h3>Upcoming Events</h3><p>Upcoming events,Visit events to have a look !.</p></div>
+            <div class="card"><h3>Recent Messages</h3><p>New messages,Visit message to have a look</p></div>
             <div class="card"><h3>Marketplace Highlights</h3><p>Check out the latest items to buy.</p></div>
-            <div class="card"><h3>Your Groups</h3><p>You are currently in 3 groups Visit groups to access.</p></div>
+            <div class="card"><h3>Your Groups</h3><p>Visit groups to access.</p></div>
         </div>
     </div>
     <div class="go-back-container"><button class="go-back-button" onclick="window.history.back()">Go Back</button></div>
