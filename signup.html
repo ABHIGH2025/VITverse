@@ -1,127 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - VITVerse: Campus Nexus</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - VITVerse: Campus Nexus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #F4F4F4; /* Sugar */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #F4F4F4;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+    }
 
+    .signup-container {
+        background-color: #fff;
+        padding: 2.5rem;
+        border-radius: 0.6rem;
+        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.15);
+        width: 450px;
+        text-align: center;
+    }
+
+    .signup-container h1 {
+        margin-bottom: 1.25rem;
+        color: #6B4F3D;
+        font-size: 2rem;
+    }
+
+    .signup-container input,
+    .signup-container textarea {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.75rem 0;
+        border: 1px solid #ddd;
+        border-radius: 0.3rem;
+        transition: border-color 0.3s;
+    }
+
+    .signup-container input:focus,
+    .signup-container textarea:focus {
+        border-color: #93C572;
+        outline: none;
+    }
+
+    .checkbox-group {
+        text-align: left;
+        margin: 0.75rem 0;
+    }
+
+    .checkbox-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .signup-container button {
+        padding: 0.8rem;
+        background-color: #6B4F3D;
+        color: white;
+        border: none;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    .signup-container button:hover,
+    .go-back-button:hover {
+        background-color: #93C572;
+        color: #3B2F2A;
+    }
+
+    .footer {
+        margin-top: 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .footer a {
+        text-decoration: none;
+        color: #6B4F3D;
+    }
+
+    .go-back-button {
+        background-color: #6B4F3D;
+        color: white;
+        border: none;
+        padding: 0.8rem;
+        border-radius: 0.3rem;
+        cursor: pointer;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    .button-group button {
+        flex: 1;
+    }
+
+    @media (max-width: 768px) {
         .signup-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
+            width: 90%;
         }
+    }
+</style>
 
-        .signup-container h2 {
-            margin-bottom: 20px;
-            color: #6B4F3D; /* Mocha */
-        }
-
-        .signup-container input,
-        .signup-container select {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #C5C6C7; /* Wheat */
-            border-radius: 5px;
-        }
-
-        .signup-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #6B4F3D; /* Mocha */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .signup-container button:hover {
-            background-color: #93C572; /* Pistachio */
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: #6B4F3D; /* Mocha */
-        }
-
-        .go-back-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .go-back-button {
-            background-color: #6B4F3D; /* Mocha */
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .go-back-button:hover {
-            background-color: #93C572; /* Pistachio */
-        }
-    </style>
 </head>
 <body>
-    <div class="signup-container">
-        <h2>Create an Account</h2>
-        <form id="signupForm">
-            <input type="text" id="fullName" placeholder="Full Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-            <select id="role" required>
-                <option value="" disabled selected>Select Role</option>
-                <option value="student">Student</option>
-                <option value="faculty">Faculty</option>
-            </select>
-            <button type="submit">Sign Up</button>
-        </form>
-        <div class="footer">
-            <p>Already have an account? <a href="login.html">Login here</a></p>
-        </div>
-    </div>
-    <div class="go-back-container">
-        <button class="go-back-button" onclick="goBack()">Go Back</button>
-    </div>
+  <div class="signup-container">
+    <h1>Create Account</h1>
+    <form id="signupForm" method="POST" action="/addUser">
+      <input type="text" id="studentId" name="studentId" placeholder="Student ID" required />
+      <input type="text" id="fullName" name="fullName" placeholder="Full Name" required />
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <textarea id="bio" name="bio" placeholder="Short Bio (optional)" rows="3"></textarea>
+      <input type="password" id="password" name="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
 
-    <script>
-        // Add any JavaScript functionality here if needed
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Here you can add your signup logic
-            alert('Signup functionality not implemented yet.');
-        });
+      <div class="checkbox-group">
+        <label>Notification Preferences:</label>
+        <label><input type="checkbox" name="notificationPreferences" value="email" /> Email</label>
+        <label><input type="checkbox" name="notificationPreferences" value="sms" /> SMS</label>
+        <label><input type="checkbox" name="notificationPreferences" value="push" /> Push Notification</label>
+      </div>
 
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+      <div class="button-group">
+        <button type="submit">Sign Up</button>
+        <button type="button" class="go-back-button" onclick="goBack()">Go Back</button>
+      </div>
+    </form>
+    <div class="footer">
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      const pwd = document.getElementById('password').value;
+      const confirmPwd = document.getElementById('confirmPassword').value;
+
+      if (pwd !== confirmPwd) {
+        e.preventDefault();
+        alert("Passwords do not match!");
+      }
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 </body>
 </html>
