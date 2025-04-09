@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,139 +12,153 @@
             margin: 0;
             padding: 0;
         }
-
+    
         body {
             font-family: 'Arial', sans-serif;
-            background-color: lightgray;
-            padding: 20px;
+            background-color: #add8e6;
+            padding: 1.5rem;
+            line-height: 1.6;
         }
-
+    
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: saddlebrown;
+            background-color: #3b2f2a;
             color: white;
-            padding: 10px 20px;
+            padding: 0.75rem 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-
+    
         .logo {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: bold;
         }
-
+    
         .messages-container {
-            margin-top: 20px;
+            margin-top: 1.5rem;
             background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
         }
-
-        .chat-window {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid wheat;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 20px;
-            background-color: lightgray;
+    
+        .messages-container h2 {
+            margin-bottom: 1.2rem;
+            color: #3b2f2a;
+            font-size: 1.75rem;
         }
-
+    
         .message {
-            background-color: lightgray;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
+            background-color: #ffffcc;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border-radius: 0.3rem;
         }
-
+    
+        .message p {
+            margin-top: 0.5rem;
+            color: #333;
+            font-size: 0.9rem;
+        }
+    
         .send-message {
+            margin-top: 1.5rem;
             background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
         }
-
+    
+        .send-message input,
         .send-message textarea {
             width: 100%;
-            height: 100px;
-            margin-bottom: 10px;
-            border: 1px solid wheat;
-            border-radius: 5px;
-            padding: 10px;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 0.3rem;
+            font-size: 1rem;
         }
-
+    
         .send-message button {
-            background-color: saddlebrown;
+            background-color: #3b2f2a;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 0.75rem 1rem;
+            border-radius: 0.3rem;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-
+    
         .send-message button:hover {
-            background-color: darkseagreen;
+            background-color: #93c572;
+            color: #3b2f2a;
         }
-
+    
         footer {
-            background-color: black;
+            background-color: #93c572;
             color: white;
-            padding: 20px;
+            padding: 1.5rem;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 1.5rem;
         }
-
+    
         footer a {
-            color: darkseagreen;
+            color: gold;
             text-decoration: none;
         }
-
+    
         .go-back-container {
-            margin-top: 20px;
+            margin-top: 1.5rem;
             text-align: center;
         }
-
+    
         .go-back-button {
-            background-color: saddlebrown;
+            background-color: #3b2f2a;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 0.75rem 1rem;
+            border-radius: 0.3rem;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-
+    
         .go-back-button:hover {
-            background-color: darkseagreen;
+            background-color: #93c572;
+            color: #3b2f2a;
+        }
+    
+        @media (max-width: 768px) {
+            .messages-container,
+            .send-message {
+                padding: 1rem;
+            }
+    
+            body {
+                padding: 1rem;
+            }
         }
     </style>
+    
 </head>
+
 <body>
     <header>
         <div class="logo">VITVerse</div>
     </header>
 
     <div class="messages-container">
-        <h2 style="color: saddlebrown;">Your Messages</h2>
-        <select id="recipientId">
-            <option value="" disabled selected>Select Recipient</option>
-            <option value="user1">AMIT GUPTA</option>
-            <option value="user2">SIDDHANT JAIN</option>
-            <option value="user3">SHASHANK</option>
-        </select>
-
-        <div class="chat-window" id="chatWindow">
-            <!-- Chat messages will be displayed here --> 
+        <h2>Messages</h2>
+        <div id="messagesDisplay">
+            <!-- Messages will be loaded dynamically here -->
         </div>
 
         <div class="send-message">
-            <h3 style="color: saddlebrown;">Send a New Message</h3>
-            <textarea id="messageContent" placeholder="Type your message here..."></textarea>
-            <button id="sendMessage">Send Message</button>
+            <h3>Send a New Message</h3>
+            <input type="text" id="recipientId" placeholder="Recipient ID" required>
+            <textarea id="messageContent" placeholder="Message Content" required></textarea>
+            <button id="sendMessageButton">Send Message</button>
         </div>
-    </div>
-    <div class="go-back-container">
-        <button class="go-back-button" onclick="goBack()">Go Back</button>
     </div>
 
     <footer>
@@ -151,45 +166,71 @@
         <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
     </footer>
 
+    <div class="go-back-container">
+        <button class="go-back-button" onclick="goBack()">Go Back</button>
+    </div>
+
     <script>
-        const chatWindow = document.getElementById('chatWindow');
-        const recipientIdSelect = document.getElementById('recipientId');
-        const messageContent = document.getElementById('messageContent');
-        const sendMessageButton = document.getElementById('sendMessage');
-
-        const messages = {
-            user1: [],
-            user2: [],
-            user3: []
-        };
-
-        function updateChatWindow() {
-            const selectedUser = recipientIdSelect.value;
-            chatWindow.innerHTML = '';
-
-            if (messages[selectedUser]) {
-                messages[selectedUser].forEach(msg => {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.classList.add('message');
-                    messageDiv.textContent = msg;
-                    chatWindow.appendChild(messageDiv);
-                });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to load messages
+            function loadMessages() {
+                fetch('/messages/items')
+                    .then(response => response.json())
+                    .then(messages => {
+                        const messagesDisplay = document.getElementById('messagesDisplay');
+                        messagesDisplay.innerHTML = ''; // Clear existing content
+                        messages.forEach(message => {
+                            const newMessage = document.createElement('div');
+                            newMessage.classList.add('message');
+                            newMessage.innerHTML = `
+                                <p><strong>Sender:</strong> ${message.senderId}</p>
+                                <p><strong>Recipient:</strong> ${message.recipientId}</p>
+                                <p>${message.content}</p>
+                            `;
+                            messagesDisplay.appendChild(newMessage);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching messages:', error));
             }
-        }
 
-        recipientIdSelect.addEventListener('change', updateChatWindow);
+            // Load messages on page load
+            loadMessages();
 
-        sendMessageButton.addEventListener('click', function() {
-            const recipientId = recipientIdSelect.value;
-            const content = messageContent.value;
+            // Send new message
+            document.getElementById('sendMessageButton').addEventListener('click', function () {
+                const recipientId = document.getElementById('recipientId').value;
+                const content = document.getElementById('messageContent').value;
 
-            if (recipientId && content) {
-                messages[recipientId].push(content);
-                messageContent.value = '';
-                updateChatWindow();
-            } else {
-                alert('Please select a recipient and enter a message.');
-            }
+                if (recipientId && content) {
+                    fetch('/messages/add', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                senderId: 'me', // Replace 'me' with actual sender ID (e.g., from session)
+                                recipientId: recipientId,
+                                content: content
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Reload messages after sending
+                                loadMessages();
+
+                                // Clear the input fields
+                                document.getElementById('recipientId').value = '';
+                                document.getElementById('messageContent').value = '';
+                            } else {
+                                alert('Failed to send message.');
+                            }
+                        })
+                        .catch(error => console.error('Error sending message:', error));
+                } else {
+                    alert('Please fill in all fields to send a message.');
+                }
+            });
         });
 
         function goBack() {
@@ -197,4 +238,5 @@
         }
     </script>
 </body>
+
 </html>
